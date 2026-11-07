@@ -115,20 +115,46 @@
       btn.disabled = true;
 
       try {
-        const res = await fetch('/api/predict', {
+        const payload = JSON.stringify({url: url, message_text: msg || null});
+        
+        // Multi-route resilient request: try /api/predict first, then /predict
+        let res = await fetch('/api/predict', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({url: url, message_text: msg || null})
+          body: payload
         });
+
+        if (!res.ok) {
+          res = await fetch('/predict', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: payload
+          });
+        }
+
+        if (!res.ok) {
+          const errText = await res.text();
+          throw new Error(`Server returned HTTP ${res.status}: ${errText}`);
+        }
+
         const data = await res.json();
         
+        if (!data || typeof data.risk_percentage === 'undefined') {
+          throw new Error('Unexpected response format from server: ' + JSON.stringify(data));
+        }
+
+        const riskVal = Number(data.risk_percentage);
+        const benignVal = Number(data.benign_probability || 0);
+
         document.getElementById('resultBox').style.display = 'block';
-        document.getElementById('riskScore').innerText = data.risk_percentage.toFixed(1) + '%';
-        document.getElementById('riskDecision').innerText = data.classification.toUpperCase();
-        document.getElementById('benignProb').innerText = (data.benign_probability * 100).toFixed(1) + '%';
-        document.getElementById('conformalSet').innerText = '{' + data.conformal_prediction_set.join(', ') + '}';
-        document.getElementById('modelConf').innerText = data.prediction_confidence.toUpperCase();
-        document.getElementById('uncStatus').innerText = data.uncertainty_status;
+        document.getElementById('riskScore').innerText = riskVal.toFixed(1) + '%';
+        document.getElementById('riskDecision').innerText = (data.classification || 'UNKNOWN').toUpperCase();
+        document.getElementById('benignProb').innerText = (benignVal * 100).toFixed(1) + '%';
+
+        const confSet = Array.isArray(data.conformal_prediction_set) ? data.conformal_prediction_set : [];
+        document.getElementById('conformalSet').innerText = '{' + confSet.join(', ') + '}';
+        document.getElementById('modelConf').innerText = (data.prediction_confidence || 'MEDIUM').toUpperCase();
+        document.getElementById('uncStatus').innerText = data.uncertainty_status || 'Evaluated';
 
         const banner = document.getElementById('riskBanner');
         if (data.classification === 'malicious') {
@@ -147,13 +173,15 @@
 
         const list = document.getElementById('reasonsList');
         list.innerHTML = '';
-        data.top_reasons.forEach(r => {
+        const reasons = Array.isArray(data.top_reasons) ? data.top_reasons : [];
+        reasons.forEach(r => {
           const li = document.createElement('li');
           li.innerText = r;
           list.appendChild(li);
         });
+
       } catch(e) {
-        alert('Error communicating with detection engine: ' + e);
+        alert('Error communicating with detection engine: ' + e.message);
       } finally {
         btn.innerText = "ANALYSE THREAT PROFILE";
         btn.disabled = false;

@@ -54,7 +54,10 @@ class MobiURLInferenceEngine:
 
     def _load_calibration_manifest(self):
         """Load fitted Platt scaler and conformal q_hat if manifest exists."""
-        manifest_path = os.path.join("models", "manifests", "calibration_manifest.json")
+        base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+        manifest_path = os.path.join(base_dir, "models", "manifests", "calibration_manifest.json")
+        if not os.path.exists(manifest_path):
+            manifest_path = os.path.join("models", "manifests", "calibration_manifest.json")
         if os.path.exists(manifest_path):
             try:
                 import json
