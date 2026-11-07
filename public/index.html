@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MobiURL-Guard | Mobile Malicious URL Threat Detection</title>
+  <style>
+    :root {
+      --bg: #0b132b;
+      --surface: #1c2541;
+      --primary: #00b4d8;
+      --text: #f0f4f8;
+      --muted: #8d99ae;
+      --danger: #e63946;
+      --warning: #f4a261;
+      --success: #2a9d8f;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem 1rem; display: flex; flex-direction: column; align-items: center; }
+    .container { max-width: 760px; width: 100%; }
+    .badge { display: inline-block; background: rgba(42, 157, 143, 0.2); color: var(--success); padding: 5px 14px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.75rem; }
+    h1 { font-size: 2.2rem; color: var(--primary); margin-bottom: 0.35rem; }
+    p.sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
+    .card { background: var(--surface); border-radius: 14px; padding: 1.75rem; margin-bottom: 1.5rem; box-shadow: 0 8px 30px rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.06); }
+    label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--muted); margin-bottom: 0.5rem; letter-spacing: 0.5px; }
+    input[type="text"] { width: 100%; padding: 0.9rem 1.1rem; background: #0e172f; border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: var(--text); font-size: 1rem; margin-bottom: 1.25rem; transition: border-color 0.2s; }
+    input[type="text"]:focus { outline: none; border-color: var(--primary); }
+    button { background: var(--primary); color: #0b132b; border: none; padding: 0.9rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 1.05rem; cursor: pointer; width: 100%; transition: opacity 0.2s, transform 0.1s; }
+    button:hover { opacity: 0.92; }
+    button:active { transform: scale(0.99); }
+    .result-box { display: none; margin-top: 1.75rem; }
+    .risk-banner { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-radius: 10px; margin-bottom: 1.25rem; background: rgba(0,0,0,0.25); border-left: 6px solid var(--primary); }
+    .risk-score { font-size: 2.75rem; font-weight: 800; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
+    .stat { background: #0e172f; padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.04); }
+    .stat-val { font-size: 1.15rem; font-weight: 700; margin-top: 0.35rem; }
+    .reasons { background: #0e172f; padding: 1.25rem; border-radius: 8px; font-size: 0.9rem; color: var(--muted); border: 1px solid rgba(255,255,255,0.04); }
+    .reasons ul { padding-left: 1.25rem; margin-top: 0.6rem; }
+    .reasons li { margin-bottom: 0.45rem; color: var(--text); line-height: 1.4; }
+    .quick-examples { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .example-btn { background: rgba(255,255,255,0.06); color: var(--muted); border: none; padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.75rem; cursor: pointer; }
+    .example-btn:hover { color: var(--text); background: rgba(255,255,255,0.12); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="badge">OFFLINE-CAPABLE MOBILE ENGINE</span>
+    <h1>MobiURL-Guard</h1>
+    <p class="sub">Explainable, Calibrated and Adversarially Robust Mobile Malicious URL Threat Detection</p>
+
+    <div class="card">
+      <label>TARGET URL TO ANALYSE</label>
+      <input type="text" id="urlInput" value="https://paypal.com.account-verify.test/login" placeholder="https://example.com/verify">
+
+      <div class="quick-examples">
+        <span style="font-size: 0.75rem; color: var(--muted); align-self: center;">Test samples:</span>
+        <button type="button" class="example-btn" onclick="setSample('https://paypal.com.account-verify.test/login')">Phishing Subdomain</button>
+        <button type="button" class="example-btn" onclick="setSample('http://192.168.1.1/admin/login.php')">IP Address Host</button>
+        <button type="button" class="example-btn" onclick="setSample('https://www.google.com/search?q=cybersecurity')">Benign Search</button>
+      </div>
+
+      <label>OPTIONAL MESSAGE CONTEXT (SMS / WhatsApp)</label>
+      <input type="text" id="msgInput" placeholder="e.g. Urgent! Your account is suspended, click link to verify now">
+
+      <button id="btnScan" onclick="analyzeUrl()">ANALYSE THREAT PROFILE</button>
+
+      <div class="result-box" id="resultBox">
+        <div class="risk-banner" id="riskBanner">
+          <div>
+            <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;" id="riskCat">Risk Category</div>
+            <div style="font-size: 1.35rem; font-weight: 700;" id="riskDecision">Decision</div>
+          </div>
+          <div class="risk-score" id="riskScore">0%</div>
+        </div>
+
+        <div class="grid">
+          <div class="stat">
+            <div style="font-size: 0.75rem; color: var(--muted);">ESTIMATED BENIGN PROBABILITY</div>
+            <div class="stat-val" id="benignProb">0%</div>
+          </div>
+          <div class="stat">
+            <div style="font-size: 0.75rem; color: var(--muted);">CONFORMAL PREDICTION SET</div>
+            <div class="stat-val" id="conformalSet">{Legitimate}</div>
+          </div>
+          <div class="stat">
+            <div style="font-size: 0.75rem; color: var(--muted);">MODEL CONFIDENCE</div>
+            <div class="stat-val" id="modelConf">High</div>
+          </div>
+          <div class="stat">
+            <div style="font-size: 0.75rem; color: var(--muted);">UNCERTAINTY STATUS</div>
+            <div class="stat-val" id="uncStatus">Certain</div>
+          </div>
+        </div>
+
+        <div class="reasons">
+          <strong style="color: var(--primary);">Key Influential Risk Indicators (Explainable AI):</strong>
+          <ul id="reasonsList"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setSample(url) {
+      document.getElementById('urlInput').value = url;
+    }
+
+    async function analyzeUrl() {
+      const url = document.getElementById('urlInput').value.trim();
+      const msg = document.getElementById('msgInput').value.trim();
+      if(!url) return;
+
+      const btn = document.getElementById('btnScan');
+      btn.innerText = "EVALUATING ON-DEVICE MODEL...";
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/predict', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({url: url, message_text: msg || null})
+        });
+        const data = await res.json();
+        
+        document.getElementById('resultBox').style.display = 'block';
+        document.getElementById('riskScore').innerText = data.risk_percentage.toFixed(1) + '%';
+        document.getElementById('riskDecision').innerText = data.classification.toUpperCase();
+        document.getElementById('benignProb').innerText = (data.benign_probability * 100).toFixed(1) + '%';
+        document.getElementById('conformalSet').innerText = '{' + data.conformal_prediction_set.join(', ') + '}';
+        document.getElementById('modelConf').innerText = data.prediction_confidence.toUpperCase();
+        document.getElementById('uncStatus').innerText = data.uncertainty_status;
+
+        const banner = document.getElementById('riskBanner');
+        if (data.classification === 'malicious') {
+          banner.style.borderLeft = '6px solid var(--danger)';
+          document.getElementById('riskScore').style.color = 'var(--danger)';
+          document.getElementById('riskCat').innerText = 'MALICIOUS THREAT DETECTED';
+        } else if (data.classification === 'uncertain') {
+          banner.style.borderLeft = '6px solid var(--primary)';
+          document.getElementById('riskScore').style.color = 'var(--primary)';
+          document.getElementById('riskCat').innerText = 'UNCERTAIN / INSUFFICIENT EVIDENCE';
+        } else {
+          banner.style.borderLeft = '6px solid var(--success)';
+          document.getElementById('riskScore').style.color = 'var(--success)';
+          document.getElementById('riskCat').innerText = 'LIKELY SAFE / LEGITIMATE';
+        }
+
+        const list = document.getElementById('reasonsList');
+        list.innerHTML = '';
+        data.top_reasons.forEach(r => {
+          const li = document.createElement('li');
+          li.innerText = r;
+          list.appendChild(li);
+        });
+      } catch(e) {
+        alert('Error communicating with detection engine: ' + e);
+      } finally {
+        btn.innerText = "ANALYSE THREAT PROFILE";
+        btn.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>
