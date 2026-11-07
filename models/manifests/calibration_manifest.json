@@ -1,0 +1,15 @@
+{
+  "platt_scaler": {
+    "A": 0.7711564777676418,
+    "B": -0.7906079979971701,
+    "is_fitted": true
+  },
+  "conformal": {
+    "alpha_0_10_q_hat": 0.2262,
+    "alpha_0_05_q_hat": 0.3169,
+    "alpha_0_01_q_hat": 0.8242,
+    "selected_q_hat": 0.3169
+  },
+  "calibration_samples": 1500,
+  "test_samples": 1500
+}

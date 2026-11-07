@@ -1,0 +1,47 @@
+# Dataset Configuration for MobiURL-Guard
+dataset:
+  raw_path: "data/raw/dataset.csv"
+  processed_path: "data/processed/clean_dataset.csv"
+  url_column: "url"
+  label_column: "label"
+  positive_class: 1
+  negative_class: 0
+  positive_label_meaning: "Malicious / Phishing"
+  negative_label_meaning: "Legitimate / Benign"
+  timestamp_column: null
+  message_column: null
+  channel_column: null
+  domain_column: "dom"
+
+available_raw_features:
+  - "url_len"
+  - "dom_len"
+  - "is_ip"
+  - "tld_len"
+  - "subdom_cnt"
+  - "letter_cnt"
+  - "digit_cnt"
+  - "special_cnt"
+  - "eq_cnt"
+  - "qm_cnt"
+  - "amp_cnt"
+  - "dot_cnt"
+  - "dash_cnt"
+  - "under_cnt"
+  - "letter_ratio"
+  - "digit_ratio"
+  - "spec_ratio"
+  - "is_https"
+  - "slash_cnt"
+  - "entropy"
+  - "path_len"
+  - "query_len"
+
+splitting:
+  random_seed: 42
+  train_ratio: 0.70
+  val_ratio: 0.10
+  calibration_ratio: 0.10
+  test_ratio: 0.10
+  domain_grouped_split: true
+  stratified: true

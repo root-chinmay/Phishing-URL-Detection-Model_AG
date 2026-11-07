@@ -1,0 +1,245 @@
+{
+  "dataset_path": "data\\raw\\dataset.csv",
+  "total_records": 116600,
+  "total_columns": 26,
+  "column_names": [
+    "url",
+    "url_len",
+    "dom",
+    "dom_len",
+    "is_ip",
+    "tld",
+    "tld_len",
+    "subdom_cnt",
+    "letter_cnt",
+    "digit_cnt",
+    "special_cnt",
+    "eq_cnt",
+    "qm_cnt",
+    "amp_cnt",
+    "dot_cnt",
+    "dash_cnt",
+    "under_cnt",
+    "letter_ratio",
+    "digit_ratio",
+    "spec_ratio",
+    "is_https",
+    "slash_cnt",
+    "entropy",
+    "path_len",
+    "query_len",
+    "label"
+  ],
+  "url_column": "url",
+  "label_column": "label",
+  "missing_values": {
+    "url": 0,
+    "url_len": 0,
+    "dom": 0,
+    "dom_len": 0,
+    "is_ip": 0,
+    "tld": 14,
+    "tld_len": 0,
+    "subdom_cnt": 0,
+    "letter_cnt": 0,
+    "digit_cnt": 0,
+    "special_cnt": 0,
+    "eq_cnt": 0,
+    "qm_cnt": 0,
+    "amp_cnt": 0,
+    "dot_cnt": 0,
+    "dash_cnt": 0,
+    "under_cnt": 0,
+    "letter_ratio": 0,
+    "digit_ratio": 0,
+    "spec_ratio": 0,
+    "is_https": 0,
+    "slash_cnt": 0,
+    "entropy": 0,
+    "path_len": 0,
+    "query_len": 0,
+    "label": 0
+  },
+  "total_missing_cells": 14,
+  "raw_duplicate_rows": 1369,
+  "duplicate_raw_urls": 1369,
+  "duplicate_canonical_urls": 2317,
+  "class_distribution": {
+    "0": 100000,
+    "1": 16600
+  },
+  "scheme_distribution": {
+    "https": 50271,
+    "http": 66329
+  },
+  "metadata_availability": {
+    "has_timestamps": false,
+    "has_dns_info": false,
+    "has_html_info": false,
+    "has_message_info": false
+  },
+  "leakage_candidates": [],
+  "numeric_features_summary": {
+    "url_len": {
+      "mean": 32.9525,
+      "std": 29.3699,
+      "min": 12.0,
+      "max": 1202.0,
+      "median": 27.0
+    },
+    "dom_len": {
+      "mean": 12.8458,
+      "std": 5.1407,
+      "min": 4.0,
+      "max": 62.0,
+      "median": 11.0
+    },
+    "is_ip": {
+      "mean": 0.0001,
+      "std": 0.0106,
+      "min": 0.0,
+      "max": 1.0,
+      "median": 0.0
+    },
+    "tld_len": {
+      "mean": 3.3202,
+      "std": 1.4182,
+      "min": 0.0,
+      "max": 22.0,
+      "median": 3.0
+    },
+    "subdom_cnt": {
+      "mean": 0.8457,
+      "std": 0.4806,
+      "min": 0.0,
+      "max": 7.0,
+      "median": 1.0
+    },
+    "letter_cnt": {
+      "mean": 25.0068,
+      "std": 22.3963,
+      "min": 4.0,
+      "max": 1037.0,
+      "median": 20.0
+    },
+    "digit_cnt": {
+      "mean": 0.944,
+      "std": 5.9477,
+      "min": 0.0,
+      "max": 321.0,
+      "median": 0.0
+    },
+    "special_cnt": {
+      "mean": 7.0017,
+      "std": 3.9957,
+      "min": 4.0,
+      "max": 234.0,
+      "median": 6.0
+    },
+    "eq_cnt": {
+      "mean": 0.0795,
+      "std": 0.4926,
+      "min": 0.0,
+      "max": 29.0,
+      "median": 0.0
+    },
+    "qm_cnt": {
+      "mean": 0.0384,
+      "std": 0.1999,
+      "min": 0.0,
+      "max": 17.0,
+      "median": 0.0
+    },
+    "amp_cnt": {
+      "mean": 0.0409,
+      "std": 0.3599,
+      "min": 0.0,
+      "max": 27.0,
+      "median": 0.0
+    },
+    "dot_cnt": {
+      "mean": 2.149,
+      "std": 0.7506,
+      "min": 1.0,
+      "max": 15.0,
+      "median": 2.0
+    },
+    "dash_cnt": {
+      "mean": 0.3417,
+      "std": 0.9782,
+      "min": 0.0,
+      "max": 25.0,
+      "median": 0.0
+    },
+    "under_cnt": {
+      "mean": 0.0538,
+      "std": 0.4837,
+      "min": 0.0,
+      "max": 20.0,
+      "median": 0.0
+    },
+    "letter_ratio": {
+      "mean": 0.7525,
+      "std": 0.0591,
+      "min": 0.1449,
+      "max": 0.936,
+      "median": 0.75
+    },
+    "digit_ratio": {
+      "mean": 0.0131,
+      "std": 0.0477,
+      "min": 0.0,
+      "max": 0.8261,
+      "median": 0.0
+    },
+    "spec_ratio": {
+      "mean": 0.2344,
+      "std": 0.0529,
+      "min": 0.013,
+      "max": 0.5238,
+      "median": 0.2368
+    },
+    "is_https": {
+      "mean": 0.4311,
+      "std": 0.4952,
+      "min": 0.0,
+      "max": 1.0,
+      "median": 0.0
+    },
+    "slash_cnt": {
+      "mean": 3.215,
+      "std": 0.9305,
+      "min": 2.0,
+      "max": 37.0,
+      "median": 3.0
+    },
+    "entropy": {
+      "mean": 3.8637,
+      "std": 0.3596,
+      "min": 2.6535,
+      "max": 6.0327,
+      "median": 3.8314
+    },
+    "path_len": {
+      "mean": 6.3914,
+      "std": 17.589,
+      "min": 0.0,
+      "max": 670.0,
+      "median": 1.0
+    },
+    "query_len": {
+      "mean": 1.6006,
+      "std": 19.2736,
+      "min": 0.0,
+      "max": 1148.0,
+      "median": 0.0
+    },
+    "label": {
+      "mean": 0.1424,
+      "std": 0.3494,
+      "min": 0.0,
+      "max": 1.0,
+      "median": 0.0
+    }
+  }
+}

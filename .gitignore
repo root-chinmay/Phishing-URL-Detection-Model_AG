@@ -1,0 +1,30 @@
+# Raw Datasets (Kept local, excluded from VCS to prevent secret push blocks)
+data/raw/
+*.csv
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.whl
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Buildozer / Android build artifacts
+.buildozer/
+bin/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temporary / OS files
+.DS_Store
+Thumbs.db
+*.log

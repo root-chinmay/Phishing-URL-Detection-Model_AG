@@ -1,0 +1,44 @@
+# Model and Research Configuration for MobiURL-Guard
+project:
+  name: "MobiURL-Guard"
+  version: "1.0.0"
+  description: "Explainable, Calibrated, Adversarially Robust and Privacy-Aware Mobile Malicious URL Detection"
+
+training:
+  random_seed: 42
+  eval_metric: "f1"
+  cross_validation_folds: 5
+  baselines:
+    - "logistic_regression"
+    - "naive_bayes"
+    - "decision_tree"
+    - "random_forest"
+    - "extra_trees"
+    - "gradient_boosting"
+    - "lightgbm"
+
+calibration:
+  method: "isotonic"  # "isotonic" or "sigmoid" (Platt scaling)
+  n_bins: 10
+  alpha: 0.05  # For 95% confidence bounds
+
+conformal:
+  nominal_coverage: 0.95
+  alternative_coverages: [0.90, 0.95, 0.99]
+  uncertainty_class: "Uncertain / Insufficient Evidence"
+
+adversarial:
+  synthetic_domain_suffix: ".test"
+  perturbation_types:
+    - "homoglyph_replacement"
+    - "subdomain_injection"
+    - "typosquatting"
+    - "url_padding"
+    - "hex_encoding"
+    - "param_obfuscation"
+
+mobile:
+  max_model_size_mb: 5.0
+  target_latency_ms: 15.0
+  export_format: "compact_json_trees"
+  offline_mode_default: true

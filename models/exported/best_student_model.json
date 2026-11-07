@@ -1,0 +1,1934 @@
+{
+  "model_type": "CompactEnsembleStudent",
+  "version": "1.0.0",
+  "metadata": {
+    "best_model": "Random Forest Ensemble",
+    "f1_score": 0.9278,
+    "training_samples": 14000,
+    "test_samples": 2000
+  },
+  "feature_names": [
+    "url_len",
+    "dom_len",
+    "is_ip",
+    "tld_len",
+    "subdom_cnt",
+    "letter_cnt",
+    "digit_cnt",
+    "special_cnt",
+    "eq_cnt",
+    "qm_cnt",
+    "amp_cnt",
+    "dot_cnt",
+    "dash_cnt",
+    "under_cnt",
+    "letter_ratio",
+    "digit_ratio",
+    "spec_ratio",
+    "is_https",
+    "slash_cnt",
+    "entropy",
+    "path_len",
+    "query_len"
+  ],
+  "weights": [
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.2
+  ],
+  "trees": [
+    {
+      "feature": "is_https",
+      "threshold": 0.0,
+      "left": {
+        "feature": "digit_cnt",
+        "threshold": 2.0,
+        "left": {
+          "feature": "digit_cnt",
+          "threshold": 0.0,
+          "left": {
+            "feature": "dash_cnt",
+            "threshold": 1.0,
+            "left": {
+              "feature": "subdom_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "path_len",
+                "threshold": 4.0,
+                "left": {
+                  "value": 0.0448
+                },
+                "right": {
+                  "value": 0.3559
+                }
+              },
+              "right": {
+                "feature": "spec_ratio",
+                "threshold": 0.2143,
+                "left": {
+                  "value": 0.0247
+                },
+                "right": {
+                  "value": 0.0023
+                }
+              }
+            },
+            "right": {
+              "feature": "slash_cnt",
+              "threshold": 2.0,
+              "left": {
+                "value": 1.0
+              },
+              "right": {
+                "feature": "subdom_cnt",
+                "threshold": 0.0,
+                "left": {
+                  "value": 0.25
+                },
+                "right": {
+                  "value": 0.0
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "subdom_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "path_len",
+              "threshold": 5.0,
+              "left": {
+                "value": 0.4211
+              },
+              "right": {
+                "feature": "under_cnt",
+                "threshold": 0.0,
+                "left": {
+                  "value": 0.9535
+                },
+                "right": {
+                  "value": 0.4286
+                }
+              }
+            },
+            "right": {
+              "feature": "spec_ratio",
+              "threshold": 0.219,
+              "left": {
+                "feature": "path_len",
+                "threshold": 4.0,
+                "left": {
+                  "value": 0.7647
+                },
+                "right": {
+                  "value": 0.1163
+                }
+              },
+              "right": {
+                "feature": "special_cnt",
+                "threshold": 6.0,
+                "left": {
+                  "value": 0.0455
+                },
+                "right": {
+                  "value": 0.0
+                }
+              }
+            }
+          }
+        },
+        "right": {
+          "feature": "dot_cnt",
+          "threshold": 2.0,
+          "left": {
+            "feature": "spec_ratio",
+            "threshold": 0.2222,
+            "left": {
+              "feature": "entropy",
+              "threshold": 4.124,
+              "left": {
+                "feature": "tld_len",
+                "threshold": 3.0,
+                "left": {
+                  "value": 0.4
+                },
+                "right": {
+                  "value": 1.0
+                }
+              },
+              "right": {
+                "feature": "letter_ratio",
+                "threshold": 0.7463,
+                "left": {
+                  "value": 1.0
+                },
+                "right": {
+                  "value": 0.9677
+                }
+              }
+            },
+            "right": {
+              "feature": "spec_ratio",
+              "threshold": 0.25,
+              "left": {
+                "value": 0.6875
+              },
+              "right": {
+                "value": 0.0769
+              }
+            }
+          },
+          "right": {
+            "feature": "letter_ratio",
+            "threshold": 0.575,
+            "left": {
+              "value": 0.9167
+            },
+            "right": {
+              "feature": "dom_len",
+              "threshold": 15.0,
+              "left": {
+                "feature": "entropy",
+                "threshold": 4.0441,
+                "left": {
+                  "value": 1.0
+                },
+                "right": {
+                  "value": 0.0758
+                }
+              },
+              "right": {
+                "value": 0.75
+              }
+            }
+          }
+        }
+      },
+      "right": {
+        "feature": "entropy",
+        "threshold": 3.8729,
+        "left": {
+          "feature": "path_len",
+          "threshold": 4.0,
+          "left": {
+            "feature": "url_len",
+            "threshold": 26.0,
+            "left": {
+              "feature": "dash_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "path_len",
+                "threshold": 1.0,
+                "left": {
+                  "value": 0.0568
+                },
+                "right": {
+                  "value": 0.2644
+                }
+              },
+              "right": {
+                "feature": "spec_ratio",
+                "threshold": 0.2727,
+                "left": {
+                  "value": 0.7436
+                },
+                "right": {
+                  "value": 0.2571
+                }
+              }
+            },
+            "right": {
+              "feature": "dom_len",
+              "threshold": 10.0,
+              "left": {
+                "feature": "subdom_cnt",
+                "threshold": 1.0,
+                "left": {
+                  "value": 0.9675
+                },
+                "right": {
+                  "value": 0.2143
+                }
+              },
+              "right": {
+                "feature": "dot_cnt",
+                "threshold": 1.0,
+                "left": {
+                  "value": 0.4938
+                },
+                "right": {
+                  "value": 0.1337
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "subdom_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "slash_cnt",
+              "threshold": 3.0,
+              "left": {
+                "value": 0.997
+              },
+              "right": {
+                "feature": "dom_len",
+                "threshold": 7.8,
+                "left": {
+                  "value": 0.5
+                },
+                "right": {
+                  "value": 0.9623
+                }
+              }
+            },
+            "right": {
+              "feature": "url_len",
+              "threshold": 23.0,
+              "left": {
+                "value": 1.0
+              },
+              "right": {
+                "feature": "dash_cnt",
+                "threshold": 1.0,
+                "left": {
+                  "value": 0.1184
+                },
+                "right": {
+                  "value": 1.0
+                }
+              }
+            }
+          }
+        },
+        "right": {
+          "feature": "dom_len",
+          "threshold": 11.0,
+          "left": {
+            "feature": "tld_len",
+            "threshold": 3.0,
+            "left": {
+              "feature": "digit_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "slash_cnt",
+                "threshold": 3.0,
+                "left": {
+                  "value": 0.9652
+                },
+                "right": {
+                  "value": 0.5826
+                }
+              },
+              "right": {
+                "feature": "subdom_cnt",
+                "threshold": 1.0,
+                "left": {
+                  "value": 0.994
+                },
+                "right": {
+                  "value": 0.9364
+                }
+              }
+            },
+            "right": {
+              "feature": "tld_len",
+              "threshold": 4.0,
+              "left": {
+                "value": 1.0
+              },
+              "right": {
+                "feature": "query_len",
+                "threshold": 8.0,
+                "left": {
+                  "value": 0.1149
+                },
+                "right": {
+                  "value": 1.0
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "entropy",
+            "threshold": 4.1106,
+            "left": {
+              "feature": "subdom_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "special_cnt",
+                "threshold": 5.0,
+                "left": {
+                  "value": 0.4157
+                },
+                "right": {
+                  "value": 0.879
+                }
+              },
+              "right": {
+                "feature": "digit_cnt",
+                "threshold": 0.0,
+                "left": {
+                  "value": 0.2301
+                },
+                "right": {
+                  "value": 0.8095
+                }
+              }
+            },
+            "right": {
+              "feature": "digit_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "subdom_cnt",
+                "threshold": 0.0,
+                "left": {
+                  "value": 0.9204
+                },
+                "right": {
+                  "value": 0.5673
+                }
+              },
+              "right": {
+                "feature": "digit_ratio",
+                "threshold": 0.0638,
+                "left": {
+                  "value": 0.8772
+                },
+                "right": {
+                  "value": 0.9882
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "feature": "is_https",
+      "threshold": 0.0,
+      "left": {
+        "feature": "digit_ratio",
+        "threshold": 0.0714,
+        "left": {
+          "feature": "digit_cnt",
+          "threshold": 0.0,
+          "left": {
+            "feature": "dash_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "subdom_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "eq_cnt",
+                "threshold": 0.0,
+                "left": {
+                  "value": 0.0486
+                },
+                "right": {
+                  "value": 0.7273
+                }
+              },
+              "right": {
+                "value": 0.0048
+              }
+            },
+            "right": {
+              "feature": "slash_cnt",
+              "threshold": 2.0,
+              "left": {
+                "feature": "dash_cnt",
+                "threshold": 1.0,
+                "left": {
+                  "value": 0.4615
+                },
+                "right": {
+                  "value": 1.0
+                }
+              },
+              "right": {
+                "feature": "subdom_cnt",
+                "threshold": 0.0,
+                "left": {
+                  "value": 0.2043
+                },
+                "right": {
+                  "value": 0.025
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "subdom_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "path_len",
+              "threshold": 1.0,
+              "left": {
+                "value": 0.3077
+              },
+              "right": {
+                "feature": "tld_len",
+                "threshold": 2.0,
+                "left": {
+                  "value": 1.0
+                },
+                "right": {
+                  "value": 0.5333
+                }
+              }
+            },
+            "right": {
+              "feature": "dash_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "dot_cnt",
+                "threshold": 3.0,
+                "left": {
+                  "value": 0.0
+                },
+                "right": {
+                  "value": 0.0455
+                }
+              },
+              "right": {
+                "feature": "tld_len",
+                "threshold": 2.0,
+                "left": {
+                  "value": 0.0909
+                },
+                "right": {
+                  "value": 0.6757
+                }
+              }
+            }
+          }
+        },
+        "right": {
+          "feature": "spec_ratio",
+          "threshold": 0.2083,
+          "left": {
+            "feature": "dot_cnt",
+            "threshold": 2.0,
+            "left": {
+              "feature": "entropy",
+              "threshold": 4.1351,
+              "left": {
+                "feature": "slash_cnt",
+                "threshold": 2.0,
+                "left": {
+                  "value": 1.0
+                },
+                "right": {
+                  "value": 0.4444
+                }
+              },
+              "right": {
+                "value": 1.0
+              }
+            },
+            "right": {
+              "feature": "special_cnt",
+              "threshold": 7.0,
+              "left": {
+                "value": 1.0
+              },
+              "right": {
+                "feature": "digit_cnt",
+                "threshold": 8.0,
+                "left": {
+                  "value": 0.0
+                },
+                "right": {
+                  "value": 0.5556
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "spec_ratio",
+            "threshold": 0.25,
+            "left": {
+              "feature": "dot_cnt",
+              "threshold": 2.0,
+              "left": {
+                "feature": "dom_len",
+                "threshold": 11.0,
+                "left": {
+                  "value": 0.913
+                },
+                "right": {
+                  "value": 0.5
+                }
+              },
+              "right": {
+                "feature": "entropy",
+                "threshold": 4.0378,
+                "left": {
+                  "value": 0.625
+                },
+                "right": {
+                  "value": 0.05
+                }
+              }
+            },
+            "right": {
+              "feature": "dom_len",
+              "threshold": 7.0,
+              "left": {
+                "value": 0.25
+              },
+              "right": {
+                "value": 0.0
+              }
+            }
+          }
+        }
+      },
+      "right": {
+        "feature": "entropy",
+        "threshold": 3.8797,
+        "left": {
+          "feature": "path_len",
+          "threshold": 4.0,
+          "left": {
+            "feature": "letter_cnt",
+            "threshold": 24.0,
+            "left": {
+              "feature": "dash_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "spec_ratio",
+                "threshold": 0.2308,
+                "left": {
+                  "value": 0.2215
+                },
+                "right": {
+                  "value": 0.0698
+                }
+              },
+              "right": {
+                "feature": "slash_cnt",
+                "threshold": 2.0,
+                "left": {
+                  "value": 0.0
+                },
+                "right": {
+                  "value": 0.5784
+                }
+              }
+            },
+            "right": {
+              "feature": "dom_len",
+              "threshold": 11.0,
+              "left": {
+                "value": 1.0
+              },
+              "right": {
+                "feature": "tld_len",
+                "threshold": 3.0,
+                "left": {
+                  "value": 0.1493
+                },
+                "right": {
+                  "value": 0.8
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "subdom_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "slash_cnt",
+              "threshold": 3.0,
+              "left": {
+                "value": 0.9972
+              },
+              "right": {
+                "feature": "url_len",
+                "threshold": 29.0,
+                "left": {
+                  "value": 0.5278
+                },
+                "right": {
+                  "value": 1.0
+                }
+              }
+            },
+            "right": {
+              "feature": "url_len",
+              "threshold": 23.0,
+              "left": {
+                "value": 1.0
+              },
+              "right": {
+                "feature": "letter_cnt",
+                "threshold": 31.0,
+                "left": {
+                  "value": 0.2436
+                },
+                "right": {
+                  "value": 0.85
+                }
+              }
+            }
+          }
+        },
+        "right": {
+          "feature": "dom_len",
+          "threshold": 11.0,
+          "left": {
+            "feature": "tld_len",
+            "threshold": 3.0,
+            "left": {
+              "feature": "subdom_cnt",
+              "threshold": 1.0,
+              "left": {
+                "feature": "digit_cnt",
+                "threshold": 0.0,
+                "left": {
+                  "value": 0.9392
+                },
+                "right": {
+                  "value": 0.9971
+                }
+              },
+              "right": {
+                "feature": "spec_ratio",
+                "threshold": 0.1827,
+                "left": {
+                  "value": 0.9474
+                },
+                "right": {
+                  "value": 0.2632
+                }
+              }
+            },
+            "right": {
+              "feature": "tld_len",
+              "threshold": 4.0,
+              "left": {
+                "value": 1.0
+              },
+              "right": {
+                "feature": "tld_len",
+                "threshold": 5.0,
+                "left": {
+                  "value": 0.4839
+                },
+                "right": {
+                  "value": 0.0667
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "digit_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "subdom_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "special_cnt",
+                "threshold": 5.0,
+                "left": {
+                  "value": 0.4157
+                },
+                "right": {
+                  "value": 0.8854
+                }
+              },
+              "right": {
+                "feature": "dom_len",
+                "threshold": 15.0,
+                "left": {
+                  "value": 0.5272
+                },
+                "right": {
+                  "value": 0.2095
+                }
+              }
+            },
+            "right": {
+              "feature": "digit_ratio",
+              "threshold": 0.119,
+              "left": {
+                "feature": "dash_cnt",
+                "threshold": 3.0,
+                "left": {
+                  "value": 0.9312
+                },
+                "right": {
+                  "value": 0.6364
+                }
+              },
+              "right": {
+                "feature": "spec_ratio",
+                "threshold": 0.1783,
+                "left": {
+                  "value": 1.0
+                },
+                "right": {
+                  "value": 0.95
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "feature": "is_https",
+      "threshold": 0.0,
+      "left": {
+        "feature": "digit_cnt",
+        "threshold": 2.0,
+        "left": {
+          "feature": "digit_cnt",
+          "threshold": 0.0,
+          "left": {
+            "feature": "dash_cnt",
+            "threshold": 1.0,
+            "left": {
+              "feature": "subdom_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "eq_cnt",
+                "threshold": 0.0,
+                "left": {
+                  "value": 0.0499
+                },
+                "right": {
+                  "value": 0.75
+                }
+              },
+              "right": {
+                "feature": "letter_ratio",
+                "threshold": 0.7857,
+                "left": {
+                  "value": 0.0025
+                },
+                "right": {
+                  "value": 0.0229
+                }
+              }
+            },
+            "right": {
+              "feature": "slash_cnt",
+              "threshold": 2.0,
+              "left": {
+                "value": 1.0
+              },
+              "right": {
+                "feature": "path_len",
+                "threshold": 29.4,
+                "left": {
+                  "value": 0.1081
+                },
+                "right": {
+                  "value": 0.0
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "subdom_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "letter_cnt",
+              "threshold": 14.0,
+              "left": {
+                "value": 0.1765
+              },
+              "right": {
+                "feature": "entropy",
+                "threshold": 3.6978,
+                "left": {
+                  "value": 0.6667
+                },
+                "right": {
+                  "value": 0.9744
+                }
+              }
+            },
+            "right": {
+              "feature": "spec_ratio",
+              "threshold": 0.214,
+              "left": {
+                "feature": "path_len",
+                "threshold": 7.0,
+                "left": {
+                  "value": 0.6875
+                },
+                "right": {
+                  "value": 0.1622
+                }
+              },
+              "right": {
+                "feature": "digit_ratio",
+                "threshold": 0.0714,
+                "left": {
+                  "value": 0.0
+                },
+                "right": {
+                  "value": 0.1667
+                }
+              }
+            }
+          }
+        },
+        "right": {
+          "feature": "dot_cnt",
+          "threshold": 2.0,
+          "left": {
+            "feature": "spec_ratio",
+            "threshold": 0.2083,
+            "left": {
+              "feature": "slash_cnt",
+              "threshold": 4.0,
+              "left": {
+                "feature": "slash_cnt",
+                "threshold": 3.0,
+                "left": {
+                  "value": 1.0
+                },
+                "right": {
+                  "value": 0.9545
+                }
+              },
+              "right": {
+                "value": 0.8571
+              }
+            },
+            "right": {
+              "feature": "digit_cnt",
+              "threshold": 4.0,
+              "left": {
+                "feature": "letter_ratio",
+                "threshold": 0.5853,
+                "left": {
+                  "value": 0.0
+                },
+                "right": {
+                  "value": 0.75
+                }
+              },
+              "right": {
+                "value": 1.0
+              }
+            }
+          },
+          "right": {
+            "feature": "spec_ratio",
+            "threshold": 0.1754,
+            "left": {
+              "feature": "digit_cnt",
+              "threshold": 4.0,
+              "left": {
+                "value": 0.1429
+              },
+              "right": {
+                "feature": "dom_len",
+                "threshold": 14.0,
+                "left": {
+                  "value": 0.6667
+                },
+                "right": {
+                  "value": 1.0
+                }
+              }
+            },
+            "right": {
+              "feature": "entropy",
+              "threshold": 4.0169,
+              "left": {
+                "value": 0.9
+              },
+              "right": {
+                "feature": "digit_ratio",
+                "threshold": 0.1887,
+                "left": {
+                  "value": 0.0455
+                },
+                "right": {
+                  "value": 0.4286
+                }
+              }
+            }
+          }
+        }
+      },
+      "right": {
+        "feature": "entropy",
+        "threshold": 3.8797,
+        "left": {
+          "feature": "path_len",
+          "threshold": 4.0,
+          "left": {
+            "feature": "dash_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "url_len",
+              "threshold": 24.0,
+              "left": {
+                "feature": "dot_cnt",
+                "threshold": 1.0,
+                "left": {
+                  "value": 0.1581
+                },
+                "right": {
+                  "value": 0.0313
+                }
+              },
+              "right": {
+                "feature": "dom_len",
+                "threshold": 11.0,
+                "left": {
+                  "value": 0.6883
+                },
+                "right": {
+                  "value": 0.1119
+                }
+              }
+            },
+            "right": {
+              "feature": "dom_len",
+              "threshold": 9.0,
+              "left": {
+                "feature": "url_len",
+                "threshold": 24.8,
+                "left": {
+                  "value": 0.6667
+                },
+                "right": {
+                  "value": 1.0
+                }
+              },
+              "right": {
+                "feature": "subdom_cnt",
+                "threshold": 0.0,
+                "left": {
+                  "value": 0.7547
+                },
+                "right": {
+                  "value": 0.1695
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "subdom_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "tld_len",
+              "threshold": 3.0,
+              "left": {
+                "feature": "slash_cnt",
+                "threshold": 3.0,
+                "left": {
+                  "value": 0.9971
+                },
+                "right": {
+                  "value": 0.94
+                }
+              },
+              "right": {
+                "value": 0.8462
+              }
+            },
+            "right": {
+              "feature": "url_len",
+              "threshold": 23.0,
+              "left": {
+                "value": 1.0
+              },
+              "right": {
+                "feature": "path_len",
+                "threshold": 17.0,
+                "left": {
+                  "value": 0.1868
+                },
+                "right": {
+                  "value": 1.0
+                }
+              }
+            }
+          }
+        },
+        "right": {
+          "feature": "dom_len",
+          "threshold": 11.0,
+          "left": {
+            "feature": "tld_len",
+            "threshold": 3.0,
+            "left": {
+              "feature": "subdom_cnt",
+              "threshold": 1.0,
+              "left": {
+                "feature": "digit_cnt",
+                "threshold": 0.0,
+                "left": {
+                  "value": 0.934
+                },
+                "right": {
+                  "value": 0.9971
+                }
+              },
+              "right": {
+                "feature": "digit_cnt",
+                "threshold": 1.0,
+                "left": {
+                  "value": 0.2889
+                },
+                "right": {
+                  "value": 0.9623
+                }
+              }
+            },
+            "right": {
+              "feature": "tld_len",
+              "threshold": 5.0,
+              "left": {
+                "feature": "spec_ratio",
+                "threshold": 0.25,
+                "left": {
+                  "value": 0.9649
+                },
+                "right": {
+                  "value": 0.2
+                }
+              },
+              "right": {
+                "feature": "letter_ratio",
+                "threshold": 0.7545,
+                "left": {
+                  "value": 0.4
+                },
+                "right": {
+                  "value": 0.0
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "digit_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "subdom_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "special_cnt",
+                "threshold": 5.0,
+                "left": {
+                  "value": 0.4012
+                },
+                "right": {
+                  "value": 0.9098
+                }
+              },
+              "right": {
+                "feature": "dom_len",
+                "threshold": 16.0,
+                "left": {
+                  "value": 0.4258
+                },
+                "right": {
+                  "value": 0.1705
+                }
+              }
+            },
+            "right": {
+              "feature": "entropy",
+              "threshold": 4.1106,
+              "left": {
+                "feature": "url_len",
+                "threshold": 28.0,
+                "left": {
+                  "value": 0.5667
+                },
+                "right": {
+                  "value": 0.898
+                }
+              },
+              "right": {
+                "feature": "slash_cnt",
+                "threshold": 4.0,
+                "left": {
+                  "value": 0.9825
+                },
+                "right": {
+                  "value": 0.8908
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "feature": "is_https",
+      "threshold": 0.0,
+      "left": {
+        "feature": "digit_ratio",
+        "threshold": 0.0744,
+        "left": {
+          "feature": "digit_cnt",
+          "threshold": 0.0,
+          "left": {
+            "feature": "subdom_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "entropy",
+              "threshold": 4.0181,
+              "left": {
+                "feature": "entropy",
+                "threshold": 3.7745,
+                "left": {
+                  "value": 0.018
+                },
+                "right": {
+                  "value": 0.1081
+                }
+              },
+              "right": {
+                "feature": "dom_len",
+                "threshold": 19.0,
+                "left": {
+                  "value": 0.6053
+                },
+                "right": {
+                  "value": 0.0303
+                }
+              }
+            },
+            "right": {
+              "feature": "dash_cnt",
+              "threshold": 1.0,
+              "left": {
+                "feature": "spec_ratio",
+                "threshold": 0.2143,
+                "left": {
+                  "value": 0.022
+                },
+                "right": {
+                  "value": 0.003
+                }
+              },
+              "right": {
+                "feature": "slash_cnt",
+                "threshold": 2.0,
+                "left": {
+                  "value": 1.0
+                },
+                "right": {
+                  "value": 0.0556
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "subdom_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "special_cnt",
+              "threshold": 8.0,
+              "left": {
+                "feature": "dom_len",
+                "threshold": 6.0,
+                "left": {
+                  "value": 1.0
+                },
+                "right": {
+                  "value": 0.2
+                }
+              },
+              "right": {
+                "feature": "tld_len",
+                "threshold": 5.7,
+                "left": {
+                  "value": 1.0
+                },
+                "right": {
+                  "value": 0.4
+                }
+              }
+            },
+            "right": {
+              "feature": "dash_cnt",
+              "threshold": 0.0,
+              "left": {
+                "value": 0.0
+              },
+              "right": {
+                "feature": "spec_ratio",
+                "threshold": 0.2105,
+                "left": {
+                  "value": 0.6471
+                },
+                "right": {
+                  "value": 0.0
+                }
+              }
+            }
+          }
+        },
+        "right": {
+          "feature": "slash_cnt",
+          "threshold": 2.0,
+          "left": {
+            "feature": "spec_ratio",
+            "threshold": 0.2083,
+            "left": {
+              "value": 1.0
+            },
+            "right": {
+              "value": 0.7143
+            }
+          },
+          "right": {
+            "feature": "digit_ratio",
+            "threshold": 0.125,
+            "left": {
+              "feature": "letter_ratio",
+              "threshold": 0.8115,
+              "left": {
+                "feature": "dot_cnt",
+                "threshold": 2.0,
+                "left": {
+                  "value": 0.3636
+                },
+                "right": {
+                  "value": 0.0
+                }
+              },
+              "right": {
+                "value": 1.0
+              }
+            },
+            "right": {
+              "feature": "spec_ratio",
+              "threshold": 0.179,
+              "left": {
+                "feature": "query_len",
+                "threshold": 48.7,
+                "left": {
+                  "value": 1.0
+                },
+                "right": {
+                  "value": 0.8
+                }
+              },
+              "right": {
+                "feature": "path_len",
+                "threshold": 15.0,
+                "left": {
+                  "value": 0.7959
+                },
+                "right": {
+                  "value": 0.1818
+                }
+              }
+            }
+          }
+        }
+      },
+      "right": {
+        "feature": "entropy",
+        "threshold": 3.882,
+        "left": {
+          "feature": "path_len",
+          "threshold": 4.0,
+          "left": {
+            "feature": "dash_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "letter_cnt",
+              "threshold": 23.0,
+              "left": {
+                "feature": "spec_ratio",
+                "threshold": 0.2308,
+                "left": {
+                  "value": 0.2158
+                },
+                "right": {
+                  "value": 0.0616
+                }
+              },
+              "right": {
+                "feature": "dom_len",
+                "threshold": 16.0,
+                "left": {
+                  "value": 0.873
+                },
+                "right": {
+                  "value": 0.1728
+                }
+              }
+            },
+            "right": {
+              "feature": "slash_cnt",
+              "threshold": 2.0,
+              "left": {
+                "feature": "dom_len",
+                "threshold": 10.0,
+                "left": {
+                  "value": 0.2
+                },
+                "right": {
+                  "value": 0.0
+                }
+              },
+              "right": {
+                "feature": "spec_ratio",
+                "threshold": 0.2727,
+                "left": {
+                  "value": 0.8585
+                },
+                "right": {
+                  "value": 0.2941
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "subdom_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "slash_cnt",
+              "threshold": 3.0,
+              "left": {
+                "feature": "tld_len",
+                "threshold": 3.0,
+                "left": {
+                  "value": 1.0
+                },
+                "right": {
+                  "value": 0.75
+                }
+              },
+              "right": {
+                "feature": "spec_ratio",
+                "threshold": 0.2313,
+                "left": {
+                  "value": 1.0
+                },
+                "right": {
+                  "value": 0.7647
+                }
+              }
+            },
+            "right": {
+              "feature": "url_len",
+              "threshold": 23.0,
+              "left": {
+                "value": 1.0
+              },
+              "right": {
+                "feature": "url_len",
+                "threshold": 38.0,
+                "left": {
+                  "value": 0.1286
+                },
+                "right": {
+                  "value": 0.7273
+                }
+              }
+            }
+          }
+        },
+        "right": {
+          "feature": "dom_len",
+          "threshold": 11.0,
+          "left": {
+            "feature": "tld_len",
+            "threshold": 3.0,
+            "left": {
+              "feature": "digit_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "slash_cnt",
+                "threshold": 3.0,
+                "left": {
+                  "value": 0.9622
+                },
+                "right": {
+                  "value": 0.6061
+                }
+              },
+              "right": {
+                "feature": "subdom_cnt",
+                "threshold": 1.0,
+                "left": {
+                  "value": 0.9959
+                },
+                "right": {
+                  "value": 0.9565
+                }
+              }
+            },
+            "right": {
+              "feature": "tld_len",
+              "threshold": 4.0,
+              "left": {
+                "value": 1.0
+              },
+              "right": {
+                "feature": "tld_len",
+                "threshold": 5.0,
+                "left": {
+                  "value": 0.4194
+                },
+                "right": {
+                  "value": 0.0465
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "entropy",
+            "threshold": 4.1842,
+            "left": {
+              "feature": "subdom_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "special_cnt",
+                "threshold": 5.0,
+                "left": {
+                  "value": 0.4088
+                },
+                "right": {
+                  "value": 0.9225
+                }
+              },
+              "right": {
+                "feature": "digit_cnt",
+                "threshold": 0.0,
+                "left": {
+                  "value": 0.2721
+                },
+                "right": {
+                  "value": 0.7941
+                }
+              }
+            },
+            "right": {
+              "feature": "letter_ratio",
+              "threshold": 0.7762,
+              "left": {
+                "feature": "digit_ratio",
+                "threshold": 0.0509,
+                "left": {
+                  "value": 0.9074
+                },
+                "right": {
+                  "value": 0.9959
+                }
+              },
+              "right": {
+                "feature": "subdom_cnt",
+                "threshold": 0.0,
+                "left": {
+                  "value": 0.9862
+                },
+                "right": {
+                  "value": 0.6901
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "feature": "is_https",
+      "threshold": 0.0,
+      "left": {
+        "feature": "digit_cnt",
+        "threshold": 2.0,
+        "left": {
+          "feature": "digit_cnt",
+          "threshold": 0.0,
+          "left": {
+            "feature": "subdom_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "entropy",
+              "threshold": 4.0043,
+              "left": {
+                "feature": "entropy",
+                "threshold": 3.7483,
+                "left": {
+                  "value": 0.0096
+                },
+                "right": {
+                  "value": 0.13
+                }
+              },
+              "right": {
+                "feature": "spec_ratio",
+                "threshold": 0.1786,
+                "left": {
+                  "value": 0.2041
+                },
+                "right": {
+                  "value": 0.8214
+                }
+              }
+            },
+            "right": {
+              "feature": "dash_cnt",
+              "threshold": 1.0,
+              "left": {
+                "feature": "spec_ratio",
+                "threshold": 0.2143,
+                "left": {
+                  "value": 0.0285
+                },
+                "right": {
+                  "value": 0.0011
+                }
+              },
+              "right": {
+                "feature": "slash_cnt",
+                "threshold": 2.0,
+                "left": {
+                  "value": 1.0
+                },
+                "right": {
+                  "value": 0.0238
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "subdom_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "spec_ratio",
+              "threshold": 0.25,
+              "left": {
+                "feature": "spec_ratio",
+                "threshold": 0.244,
+                "left": {
+                  "value": 0.9412
+                },
+                "right": {
+                  "value": 0.3333
+                }
+              },
+              "right": {
+                "value": 0.1875
+              }
+            },
+            "right": {
+              "feature": "spec_ratio",
+              "threshold": 0.2273,
+              "left": {
+                "feature": "slash_cnt",
+                "threshold": 2.0,
+                "left": {
+                  "value": 0.875
+                },
+                "right": {
+                  "value": 0.1818
+                }
+              },
+              "right": {
+                "feature": "digit_ratio",
+                "threshold": 0.0714,
+                "left": {
+                  "value": 0.0
+                },
+                "right": {
+                  "value": 0.0769
+                }
+              }
+            }
+          }
+        },
+        "right": {
+          "feature": "dot_cnt",
+          "threshold": 2.0,
+          "left": {
+            "feature": "spec_ratio",
+            "threshold": 0.2222,
+            "left": {
+              "feature": "dash_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "entropy",
+                "threshold": 4.0902,
+                "left": {
+                  "value": 0.3333
+                },
+                "right": {
+                  "value": 0.9254
+                }
+              },
+              "right": {
+                "feature": "spec_ratio",
+                "threshold": 0.2083,
+                "left": {
+                  "value": 1.0
+                },
+                "right": {
+                  "value": 0.8
+                }
+              }
+            },
+            "right": {
+              "feature": "url_len",
+              "threshold": 22.0,
+              "left": {
+                "value": 0.9231
+              },
+              "right": {
+                "value": 0.1053
+              }
+            }
+          },
+          "right": {
+            "feature": "letter_ratio",
+            "threshold": 0.6111,
+            "left": {
+              "feature": "digit_ratio",
+              "threshold": 0.1968,
+              "left": {
+                "value": 0.4667
+              },
+              "right": {
+                "value": 1.0
+              }
+            },
+            "right": {
+              "feature": "subdom_cnt",
+              "threshold": 1.0,
+              "left": {
+                "feature": "dash_cnt",
+                "threshold": 1.0,
+                "left": {
+                  "value": 0.0476
+                },
+                "right": {
+                  "value": 0.4444
+                }
+              },
+              "right": {
+                "value": 0.5
+              }
+            }
+          }
+        }
+      },
+      "right": {
+        "feature": "entropy",
+        "threshold": 3.8731,
+        "left": {
+          "feature": "path_len",
+          "threshold": 4.0,
+          "left": {
+            "feature": "dash_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "spec_ratio",
+              "threshold": 0.2222,
+              "left": {
+                "feature": "dom_len",
+                "threshold": 10.0,
+                "left": {
+                  "value": 0.8333
+                },
+                "right": {
+                  "value": 0.2147
+                }
+              },
+              "right": {
+                "feature": "slash_cnt",
+                "threshold": 3.0,
+                "left": {
+                  "value": 0.0632
+                },
+                "right": {
+                  "value": 0.4
+                }
+              }
+            },
+            "right": {
+              "feature": "slash_cnt",
+              "threshold": 2.0,
+              "left": {
+                "feature": "letter_ratio",
+                "threshold": 0.7731,
+                "left": {
+                  "value": 0.0
+                },
+                "right": {
+                  "value": 0.2
+                }
+              },
+              "right": {
+                "feature": "spec_ratio",
+                "threshold": 0.254,
+                "left": {
+                  "value": 0.8987
+                },
+                "right": {
+                  "value": 0.5443
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "subdom_cnt",
+            "threshold": 0.0,
+            "left": {
+              "feature": "slash_cnt",
+              "threshold": 3.0,
+              "left": {
+                "feature": "tld_len",
+                "threshold": 3.0,
+                "left": {
+                  "value": 0.9942
+                },
+                "right": {
+                  "value": 0.7778
+                }
+              },
+              "right": {
+                "feature": "spec_ratio",
+                "threshold": 0.2609,
+                "left": {
+                  "value": 0.9512
+                },
+                "right": {
+                  "value": 0.5385
+                }
+              }
+            },
+            "right": {
+              "feature": "special_cnt",
+              "threshold": 6.0,
+              "left": {
+                "value": 0.8824
+              },
+              "right": {
+                "feature": "letter_cnt",
+                "threshold": 31.0,
+                "left": {
+                  "value": 0.1167
+                },
+                "right": {
+                  "value": 0.7368
+                }
+              }
+            }
+          }
+        },
+        "right": {
+          "feature": "dom_len",
+          "threshold": 11.0,
+          "left": {
+            "feature": "tld_len",
+            "threshold": 3.0,
+            "left": {
+              "feature": "digit_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "slash_cnt",
+                "threshold": 3.0,
+                "left": {
+                  "value": 0.9686
+                },
+                "right": {
+                  "value": 0.6044
+                }
+              },
+              "right": {
+                "feature": "subdom_cnt",
+                "threshold": 1.0,
+                "left": {
+                  "value": 0.9949
+                },
+                "right": {
+                  "value": 0.9478
+                }
+              }
+            },
+            "right": {
+              "feature": "tld_len",
+              "threshold": 4.0,
+              "left": {
+                "value": 1.0
+              },
+              "right": {
+                "feature": "tld_len",
+                "threshold": 5.0,
+                "left": {
+                  "value": 0.44
+                },
+                "right": {
+                  "value": 0.0192
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": "entropy",
+            "threshold": 4.1273,
+            "left": {
+              "feature": "subdom_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "special_cnt",
+                "threshold": 5.0,
+                "left": {
+                  "value": 0.4472
+                },
+                "right": {
+                  "value": 0.8984
+                }
+              },
+              "right": {
+                "feature": "dom_len",
+                "threshold": 16.0,
+                "left": {
+                  "value": 0.3869
+                },
+                "right": {
+                  "value": 0.1331
+                }
+              }
+            },
+            "right": {
+              "feature": "digit_cnt",
+              "threshold": 0.0,
+              "left": {
+                "feature": "subdom_cnt",
+                "threshold": 0.0,
+                "left": {
+                  "value": 0.9353
+                },
+                "right": {
+                  "value": 0.5872
+                }
+              },
+              "right": {
+                "feature": "slash_cnt",
+                "threshold": 4.0,
+                "left": {
+                  "value": 0.9872
+                },
+                "right": {
+                  "value": 0.8515
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

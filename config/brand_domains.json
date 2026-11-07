@@ -1,0 +1,119 @@
+{
+  "brands": [
+    {
+      "name": "Google",
+      "official_domains": ["google.com", "google.co.uk", "google.co.in", "gmail.com", "accounts.google.com"],
+      "aliases": ["google", "gmail", "googledrive"],
+      "category": "Technology & Email"
+    },
+    {
+      "name": "Microsoft",
+      "official_domains": ["microsoft.com", "live.com", "office.com", "outlook.com", "microsoftonline.com"],
+      "aliases": ["microsoft", "office365", "outlook", "onedrive"],
+      "category": "Technology & Enterprise"
+    },
+    {
+      "name": "Apple",
+      "official_domains": ["apple.com", "icloud.com", "itunes.com"],
+      "aliases": ["apple", "icloud", "appleid"],
+      "category": "Technology & Mobile"
+    },
+    {
+      "name": "PayPal",
+      "official_domains": ["paypal.com", "paypal.me"],
+      "aliases": ["paypal", "pay-pal"],
+      "category": "Financial Services"
+    },
+    {
+      "name": "Amazon",
+      "official_domains": ["amazon.com", "amazon.co.uk", "amazon.in", "amazon.de", "aws.amazon.com"],
+      "aliases": ["amazon", "prime", "amazonseller"],
+      "category": "E-Commerce"
+    },
+    {
+      "name": "Netflix",
+      "official_domains": ["netflix.com"],
+      "aliases": ["netflix"],
+      "category": "Streaming & Entertainment"
+    },
+    {
+      "name": "Facebook",
+      "official_domains": ["facebook.com", "fb.com", "meta.com"],
+      "aliases": ["facebook", "meta", "fb"],
+      "category": "Social Media"
+    },
+    {
+      "name": "Instagram",
+      "official_domains": ["instagram.com"],
+      "aliases": ["instagram", "ig"],
+      "category": "Social Media"
+    },
+    {
+      "name": "WhatsApp",
+      "official_domains": ["whatsapp.com", "web.whatsapp.com"],
+      "aliases": ["whatsapp"],
+      "category": "Messaging"
+    },
+    {
+      "name": "Chase Bank",
+      "official_domains": ["chase.com"],
+      "aliases": ["chase", "chasebank"],
+      "category": "Banking"
+    },
+    {
+      "name": "Bank of America",
+      "official_domains": ["bankofamerica.com", "bofa.com"],
+      "aliases": ["bankofamerica", "bofa"],
+      "category": "Banking"
+    },
+    {
+      "name": "Wells Fargo",
+      "official_domains": ["wellsfargo.com"],
+      "aliases": ["wellsfargo"],
+      "category": "Banking"
+    },
+    {
+      "name": "DHL",
+      "official_domains": ["dhl.com", "dhl.de"],
+      "aliases": ["dhl", "dhl-express"],
+      "category": "Logistics & Delivery"
+    },
+    {
+      "name": "FedEx",
+      "official_domains": ["fedex.com"],
+      "aliases": ["fedex"],
+      "category": "Logistics & Delivery"
+    },
+    {
+      "name": "Binance",
+      "official_domains": ["binance.com"],
+      "aliases": ["binance"],
+      "category": "Cryptocurrency"
+    },
+    {
+      "name": "Coinbase",
+      "official_domains": ["coinbase.com"],
+      "aliases": ["coinbase"],
+      "category": "Cryptocurrency"
+    },
+    {
+      "name": "Dropbox",
+      "official_domains": ["dropbox.com"],
+      "aliases": ["dropbox"],
+      "category": "Cloud Storage"
+    },
+    {
+      "name": "Adobe",
+      "official_domains": ["adobe.com"],
+      "aliases": ["adobe", "acrobat"],
+      "category": "Software"
+    }
+  ],
+  "detection_parameters": {
+    "ngram_size": 3,
+    "levenshtein_threshold": 0.82,
+    "confusable_homoglyphs": true,
+    "path_brand_flag": true,
+    "subdomain_brand_flag": true
+  }
+}
